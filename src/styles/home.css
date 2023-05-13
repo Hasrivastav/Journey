@@ -1,8 +1,7 @@
 
-
 .ripple-background {
    
-    position: relative;
+position: relative;
     overflow: hidden;
   }
   
@@ -327,8 +326,11 @@
 
 @media screen  and (max-width:550px){
    
+  .home{
+    margin-bottom: -5rem;
+  }
     .scroll{
-        margin-top: -3rem ;
+        display: none ;
     }
 
 
@@ -346,10 +348,14 @@
 }
 
 @media screen  and (max-width:390px){
+    
+    
+    nav__menu {
+    padding: 1rem 0.25rem 3rem;
+}
+    
     .combine{
-     /* max-width: 275px; */
-     
-     padding: 1rem;
+    padding: 1rem;
     }
     .home__container{
         margin-top: -57px;

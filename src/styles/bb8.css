@@ -109,7 +109,7 @@
   }
   
   
-  BB8-stripe:before,
+  .BB8-stripe:before,
   .BB8-stripe:after {
   content: '';
   position: absolute;

@@ -6,6 +6,7 @@ import './styles/App.css'
 import './styles/header.css'
 import Home from './components/Home';
 import './styles/home.css'
+import About from './components/About';
 
 
 
@@ -16,7 +17,9 @@ function App() {
    <>
    <Header />
    <main className='main'>
+
     <Home />
+    <About />
    </main>
   </>
   );
