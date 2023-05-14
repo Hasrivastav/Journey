@@ -1,21 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import "../styles/home.css";
-import Social from './Social';
-import Data from './Data';
-import Arrow from './Arrow';
-
+import React from "react";
+import { motion } from "framer-motion";
+import Social from "./Social";
+import Data from "./Data";
+import Arrow from "./Arrow";
 
 const Home = () => {
   const homeContentVariants = {
-    hidden: { y: '-100vh' },
+    hidden: { y: "-100vh" },
     visible: {
       y: 0,
       transition: {
-        type: 'spring',
+        type: "spring",
         stiffness: 80,
         duration: 2,
-        ease: 'easeOut',
+        ease: "easeOut",
       },
     },
   };
@@ -26,7 +24,7 @@ const Home = () => {
       transition: {
         duration: 1.5,
         repeat: Infinity,
-        ease: 'easeInOut',
+        ease: "easeInOut",
       },
     },
   };
@@ -53,20 +51,12 @@ const Home = () => {
             <Data />
             <Social />
           </motion.div>
-          <div className="scroll">
-            <Arrow />
-            <p>Scroll Down</p>
-          </div>
+
+          <Arrow />
         </motion.div>
         <div className="home__img"></div>
-        
-       
       </div>
-
-     
-   
     </section>
-    
   );
 };
 

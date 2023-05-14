@@ -1,6 +1,5 @@
 import React from "react";
 import data from "../assets/data.json";
-import '../styles/timeline.scss'
 
 const Timeline = () => {
   return (
@@ -20,16 +19,15 @@ const Timeline = () => {
   );
 };
 
-const TimelineItem = ({ heading, text, index ,des}) => (
+const TimelineItem = ({ heading, text, index, des }) => (
   <div
     className={`timelineItem ${
       index % 2 === 0 ? "leftTimeline" : "rightTimeline"
     }`}
   >
     <div>
-     
       <p>{text}</p>
-      <h3 style={{color:'#FCF6F5'}}>{heading}</h3>
+      <h3 style={{ color: "#FCF6F5" }}>{heading}</h3>
       <p>{des}</p>
     </div>
   </div>

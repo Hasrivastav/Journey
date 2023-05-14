@@ -6,17 +6,13 @@ import {
   AiFillYoutube,
   AiOutlineArrowUp,
 } from "react-icons/ai";
-
-import '../styles/footer.scss'
+import image from "../assets/profile.jpg";
 
 const Footer = () => {
   return (
     <footer>
       <div>
-        <img
-          
-          alt="Founder"
-        />
+        <img src={image} alt="Founder" />
 
         <h2>Harsh Srivastav</h2>
         <p>Motivation is temporary, but discipline last forever.</p>
@@ -26,8 +22,7 @@ const Footer = () => {
         <h2>Social Media</h2>
 
         <article>
-         
-          <a href="linkedin.com/in/harsh-srivastav-45ab87214" target={"blank"}>
+          <a href="https://www.linkedin.com/in/harsh-srivastav2024/" target={"blank"}>
             <AiFillLinkedin />
           </a>
           <a href="https://github.com/Hasrivastav" target={"blank"}>
