@@ -4,7 +4,7 @@ import "../styles/home.css";
 import Social from './Social';
 import Data from './Data';
 import Arrow from './Arrow';
-import About from './About';
+
 
 const Home = () => {
   const homeContentVariants = {
@@ -32,7 +32,7 @@ const Home = () => {
   };
 
   return (
-    <section className="home section ripple-background">
+    <section id="home" className="home section ripple-background">
       <div className="circle small shade5"></div>
       <div className="circle medium shade4"></div>
       <div className="circle large shade3"></div>

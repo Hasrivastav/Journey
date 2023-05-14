@@ -20,13 +20,13 @@ function App() {
     
    <>
    <Header />
-   <main className='main'>
 
-    <Home />
-     <About />
-    <Timeline />
-    <Footer />
-   </main>
+
+<Home  />
+<About  />
+<Timeline  />
+<Footer  />
+  
   </>
   );
 }

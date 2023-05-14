@@ -56,7 +56,7 @@ const Data = () => {
         </h1>
         <h3 style={{color: 'hsl(var(--hue), var(--sat), 20%)'}} className="home__subtitle">Web Developer</h3>
         <p className="home__description">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque doloremque ex deleniti veniam incidunt vel vitae accusamus. Quasi, facilis aperiam!
+        I'm a web developer with expertise in both frontend and backend technologies. Currently pursuing a B.Tech in Computer Science and Engineering,
         </p>
       
         <a href='#contact' className="button button--flex" onClick={() => window.open('mailto:harshsrivastav2111@gmail.com')}>

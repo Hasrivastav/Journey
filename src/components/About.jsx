@@ -6,7 +6,7 @@ import {  FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const About = () => {
   return (
-    <div className="about">
+    <div id="about" className="about">
 
 
      
