@@ -59,7 +59,7 @@ const Data = () => {
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque doloremque ex deleniti veniam incidunt vel vitae accusamus. Quasi, facilis aperiam!
         </p>
       
-      <a href='#contact' className="button button--flex">
+        <a href='#contact' className="button button--flex" onClick={() => window.open('mailto:harshsrivastav2111@gmail.com')}>
         Say Hello
         <svg
                   class="button__icon"

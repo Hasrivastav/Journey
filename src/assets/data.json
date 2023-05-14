@@ -1,0 +1,42 @@
+{
+    "projects": [
+
+        
+      {
+        "date": " Year 2023",
+        "title": "Third Year",
+        "description": "Until now, I have acquired knowledge of both frontend and backend web technologies, and have completed several projects in this field. Additionally, I have maintained a good academic record, with a current SGPA of 7.8."
+        
+      },
+     
+      {
+        "date": " Year 2022",
+        "title": "Second Year",
+        "description": "I started learning Data Structures and Algorithms, and over the course of the year, I developed an interest in web development."
+        
+      },
+      {
+        "date": "Year 2020",
+        "title": "B.Tech  In CSE ",
+        "description": "I secured admission into KCC Institute of Technology and Management's Bachelor of Technology program in Computer Science and Engineering through the AKTU entrance exam. I opted for the Internet of Things specialization."
+       
+      },
+     
+     
+    
+
+      {
+        "date": "Year 2019",
+        "title": "Intermediate",
+        "description":"I completed my 12th grade in Science with PCM and Computer Science from NBSSC, Jaunpur, where I also learned C++."
+        
+      },
+  
+      {
+        "date": "Year 2017",
+        "title": "High  School",
+        "description": "I completed my high school education by achieving a perfect CGPA of 10 from the Government Co-educational Senior Secondary School located in New Delhi."
+        
+      }
+    ]
+  }

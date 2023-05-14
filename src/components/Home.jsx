@@ -4,6 +4,7 @@ import "../styles/home.css";
 import Social from './Social';
 import Data from './Data';
 import Arrow from './Arrow';
+import About from './About';
 
 const Home = () => {
   const homeContentVariants = {
@@ -54,12 +55,18 @@ const Home = () => {
           </motion.div>
           <div className="scroll">
             <Arrow />
+            <p>Scroll Down</p>
           </div>
         </motion.div>
         <div className="home__img"></div>
         
+       
       </div>
+
+     
+   
     </section>
+    
   );
 };
 

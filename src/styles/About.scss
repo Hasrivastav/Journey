@@ -180,11 +180,22 @@ h1,h2,h3,span,p {
   }
 
 
-  @media (max-width: 741px) {
-    &::before,
+  @media (max-width: 900px) {
+   
     &::after {
       display: none;
     }
+
+    
+  }
+
+
+  
+  @media (max-width: 780) {
+   
+   .about{
+    height: 100%;
+   }
 
     
   }
@@ -205,6 +216,5 @@ h1,h2,h3,span,p {
 
 
 }
-
 
 
