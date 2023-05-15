@@ -28,6 +28,13 @@ const Header = () => {
                 <i className="uil uil-file-alt nav__icon"></i>Timeline
               </a>
             </li>
+
+
+            <li className="nav__item">
+              <a href="#contact" className="nav__link">
+                <i className="uil uil-message nav__icon"></i>Contact
+              </a>
+            </li>
           </ul>
 
           <i

@@ -11,6 +11,8 @@ import "./styles/arrow.scss";
 import "./styles/About.scss";
 import "./styles/timeline.scss";
 import "./styles/footer.scss";
+import "./styles/contact.scss"
+import Contact from "./components/contact";
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
       <Home />
       <About />
       <Timeline />
+      <Contact />
       <Footer />
     </>
   );
