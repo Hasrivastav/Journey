@@ -13,8 +13,7 @@ const About = () => {
         My Introduction
       </h1>
       <p className="home__description intro">
-        Hello, my name is Harsh Srivastav and I am currently pursuing my B.Tech
-        in Computer Science and Engineering, currently in my third year. I am a
+         I am currently pursuing my B.Techin Computer Science and Engineering, currently in my third year. I am a
         quick learner and have a good ability to manage my time effectively. I
         possess knowledge of MERN technology and have been working on developing
         my skills in this area.
@@ -38,8 +37,7 @@ const About = () => {
                 <span>BACKEND</span>
                 <br />
                 <span>GIT and GITHUB</span>
-                <br />
-                <span>DSA</span>
+             
               </h3>
             </div>
           </div>
