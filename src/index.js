@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 
 import App from './App';
 
+export const server = "https://journey-backend-a1ef.onrender.com/api/v1/timeline"
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

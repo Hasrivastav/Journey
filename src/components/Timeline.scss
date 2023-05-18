@@ -1,0 +1,56 @@
+.timeline-content {
+    margin-top: 20px;
+  }
+  
+  .timeline-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .timeline-year {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #990011;
+    color: white;
+    margin-right: 10px;
+  }
+  
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    background-color: #fcf6f5;
+    padding: 20px;
+    border-radius: 10px;
+    transition: opacity 0.3s;
+  }
+  
+  .timeline-item.hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .timeline-image {
+    flex: 0 0 auto;
+    margin-right: 20px;
+  }
+  
+  .timeline-details {
+    flex: 1 1 auto;
+  }
+  
+  .timeline-buttons {
+    margin-top: 10px;
+  }
+  
+  .timeline-buttons button {
+    margin-right: 10px;
+  }
