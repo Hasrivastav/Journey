@@ -49,6 +49,11 @@ const Timeline = () => {
     });
   };
 
+  const handleImageReset = () => {
+    setImage(null);
+  };
+
+
   const handleYearChange = (event) => {
     setYear(event.target.value);
   };
@@ -63,6 +68,7 @@ const Timeline = () => {
 
   const handleSubmit = async () => {
     try {
+      setLoading(true); 
       const formData = new FormData();
       formData.append('image', image);
       formData.append('year', year);
@@ -75,12 +81,16 @@ const Timeline = () => {
       setYear('');
       setTitle('');
       setDescription('');
+      
 
       fetchTimelineData();
     } catch (error) {
       console.log(error);
+    }finally {
+      setLoading(false); // Set loading state to false when the request is fulfilled
     }
   };
+  
 
   const handleDelete = async (id) => {
     try {
@@ -164,11 +174,11 @@ const Timeline = () => {
     <Button
     
   className="button-71"
-  icon={<PlusOutlined />}
+
   // size="medium"
   disabled={image || loading}
 >
-  MAKE YOUR TIMELINE
+ ADD TO YOUR TIMELINE
 </Button>
 
       </div>
@@ -189,6 +199,9 @@ const Timeline = () => {
             <Button type="primary" htmlType="submit">
               Add to Timeline
             </Button>
+            <Button onClick={handleImageReset}>
+        Reset Image
+      </Button>
           </Form.Item>
         </Form>
       )}
@@ -223,7 +236,8 @@ const Timeline = () => {
                 </Modal>
               )}
               <div className="vertical-timeline-content">
-                <img src={data.image} alt="Event" className="vertical-timeline-image" style={{ maxWidth: '100%' }} />
+                <div></div>
+                <img src={data.image} alt="Event" className="vertical-timeline-image"  />
                 <h3 className="vertical-timeline-element-title">{data.title}</h3>
                 <p className="vertical-timeline-element-description">{data.description}</p>
                 <div className="vertical-timeline-icons">
