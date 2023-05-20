@@ -34,11 +34,10 @@ const Timeline = () => {
       setLoading(false);
     }
   };
-
   const handleImageUpload = (file) => {
     setLoading(true);
     new Compressor(file, {
-      quality: 0.6,
+      quality: 0.6, // Adjust the quality setting to reduce file size
       success(result) {
         setImage(result);
         setLoading(false);
@@ -140,10 +139,11 @@ const Timeline = () => {
     try {
       const post = timelineData.find((data) => data._id === id);
       const liked = !post.liked;
-      const updatedData = {
-        liked: liked,
-      };
-      await axios.put(`https://journey-backend2.onrender.com/api/v1/timeline/post/${id}/like`, updatedData);
+  
+      // Update the like status in the database
+      await axios.put(`https://journey-backend2.onrender.com/api/v1/timeline/post/${id}/like`, { liked });
+  
+      // Fetch the updated timeline data
       fetchTimelineData();
     } catch (error) {
       console.log(error);
@@ -151,9 +151,9 @@ const Timeline = () => {
   };
 
   return (
-    <div>
+    <div id="timeline">
          {loading && <Loader />}
-      <div style={{ marginBottom: '16px' }}>
+      <div style={{ marginBottom: '16px' ,display:'flex',justifyContent:'center',alignItems:'center'}}>
         <Upload
           beforeUpload={(file) => {
             handleImageUpload(file);
@@ -161,14 +161,16 @@ const Timeline = () => {
           }}
         >
           <div className="timeline-header">
-          <Button
-  className="timeline-button"
+    <Button
+    
+  className="button-71"
   icon={<PlusOutlined />}
-  size="small"
+  // size="medium"
   disabled={image || loading}
 >
   MAKE YOUR TIMELINE
 </Button>
+
       </div>
         </Upload>
       </div>
