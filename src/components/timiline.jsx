@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { PlusOutlined, DeleteOutlined, LikeOutlined, LikeFilled, EyeOutlined, EyeInvisibleOutlined, EditOutlined } from '@ant-design/icons';
+import { PlusOutlined, DeleteOutlined, LikeOutlined, LikeFilled, EditOutlined } from '@ant-design/icons';
 import 'react-vertical-timeline-component/style.min.css';
 import axios from 'axios';
 import { Upload, Form, Input, Button, Modal } from 'antd';
-import '../styles/timeline.scss'
+import Compressor from 'compressorjs';
+import '../styles/timeline.scss';
+import Loader from './loader';
 
 const Timeline = () => {
   const [timelineData, setTimelineData] = useState([]);
@@ -15,6 +17,7 @@ const Timeline = () => {
   const [hiddenItems, setHiddenItems] = useState([]);
   const [editItemId, setEditItemId] = useState(null);
   const [editVisible, setEditVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchTimelineData();
@@ -22,15 +25,29 @@ const Timeline = () => {
 
   const fetchTimelineData = async () => {
     try {
+      setLoading(true);
       const response = await axios.get('https://journey-backend2.onrender.com/api/v1/timeline/getAll');
       setTimelineData(response.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleImageUpload = (file) => {
-    setImage(file);
+    setLoading(true);
+    new Compressor(file, {
+      quality: 0.6,
+      success(result) {
+        setImage(result);
+        setLoading(false);
+      },
+      error(err) {
+        console.log(err.message);
+        setLoading(false);
+      },
+    });
   };
 
   const handleYearChange = (event) => {
@@ -48,41 +65,27 @@ const Timeline = () => {
   const handleSubmit = async () => {
     try {
       const formData = new FormData();
-      formData.append('image', image); // Append the image file directly
-  
-      // Append other form fields
+      formData.append('image', image);
       formData.append('year', year);
       formData.append('title', title);
       formData.append('description', description);
-  
+
       await axios.post('https://journey-backend2.onrender.com/api/v1/timeline/new', formData);
-  
-      // Clear form inputs after successful submission
+
       setImage(null);
       setYear('');
       setTitle('');
       setDescription('');
-  
-      // Fetch updated timeline data
+
       fetchTimelineData();
     } catch (error) {
       console.log(error);
     }
   };
-  
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`https://journey-backend2.onrender.com/api/v1/timeline/post/${id}`);
-      fetchTimelineData();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleLike = async (id) => {
-    try {
-      await axios.put(`https://journey-backend2.onrender.com/api/v1/timeline/post/${id}`, { liked: true });
       fetchTimelineData();
     } catch (error) {
       console.log(error);
@@ -118,15 +121,29 @@ const Timeline = () => {
 
   const handleEditSubmit = async () => {
     try {
-      const formData = new FormData();
-      formData.append('image', image);
-      formData.append('year', year);
-      formData.append('title', title);
-      formData.append('description', description);
-
-      await axios.put(`https://journey-backend2.onrender.com/api/v1/timeline/put/${editItemId}`, formData);
-
+      const updatedData = {
+        year: year,
+        title: title,
+        description: description,
+      };
+  
+      await axios.put(`https://journey-backend2.onrender.com/api/v1/timeline/post/${editItemId}`, updatedData);
+  
       handleEditCancel();
+      fetchTimelineData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleLike = async (id) => {
+    try {
+      const post = timelineData.find((data) => data._id === id);
+      const liked = !post.liked;
+      const updatedData = {
+        liked: liked,
+      };
+      await axios.put(`https://journey-backend2.onrender.com/api/v1/timeline/post/${id}/like`, updatedData);
       fetchTimelineData();
     } catch (error) {
       console.log(error);
@@ -135,6 +152,7 @@ const Timeline = () => {
 
   return (
     <div>
+         {loading && <Loader />}
       <div style={{ marginBottom: '16px' }}>
         <Upload
           beforeUpload={(file) => {
@@ -142,9 +160,16 @@ const Timeline = () => {
             return false;
           }}
         >
-          <Button icon={<PlusOutlined />} size="small">
-            UPLOAD
-          </Button>
+          <div className="timeline-header">
+          <Button
+  className="timeline-button"
+  icon={<PlusOutlined />}
+  size="small"
+  disabled={image || loading}
+>
+  MAKE YOUR TIMELINE
+</Button>
+      </div>
         </Upload>
       </div>
       {image && (
@@ -174,7 +199,6 @@ const Timeline = () => {
               date={data.year}
               onClick={() => handleCollapse(data._id)}
               iconStyle={{ background: '#990011', color: '#990011' }}
-             
             >
               {editItemId === data._id && (
                 <Modal
@@ -197,16 +221,22 @@ const Timeline = () => {
                 </Modal>
               )}
               <div className="vertical-timeline-content">
-                <img src={`https://journey-backend2.onrender.com/${data.image}`} alt="Event" className="vertical-timeline-image" />
-              <h3 className="vertical-timeline-element-title">{data.title}</h3>
+                <img src={data.image} alt="Event" className="vertical-timeline-image" style={{ maxWidth: '100%' }} />
+                <h3 className="vertical-timeline-element-title">{data.title}</h3>
                 <p className="vertical-timeline-element-description">{data.description}</p>
-                {/* ... */}
                 <div className="vertical-timeline-icons">
                   <DeleteOutlined onClick={() => handleDelete(data._id)} className="timeline-icon" />
                   {data.liked ? (
-                    <LikeFilled onClick={() => handleLike(data._id)} className="timeline-icon" style={{ color: 'red' }} />
+                    <LikeFilled
+                      onClick={() => handleLike(data._id)}
+                      className="timeline-icon"
+                      style={{ color: 'red' }}
+                    />
                   ) : (
-                    <LikeOutlined onClick={() => handleLike(data._id)} className="timeline-icon" />
+                    <LikeOutlined
+                      onClick={() => handleLike(data._id)}
+                      className="timeline-icon"
+                    />
                   )}
                   <EditOutlined onClick={() => handleEdit(data._id)} className="timeline-icon" />
                 </div>
