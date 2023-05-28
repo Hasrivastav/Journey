@@ -74,9 +74,9 @@ const About = () => {
               <a href="https://viewtube-fawn.vercel.app/">
                 <h3>ViewTube</h3>
               </a>
-              <a href="https://react-todo-amber-three.vercel.app/">
+              {/* <a href="https://react-todo-amber-three.vercel.app/">
                 <h3>Todo APP</h3>
-              </a>
+              </a> */}
             </div>
           </div>
           <ul className="sci">
